@@ -15,9 +15,16 @@ const authRoute = require("./routes/auth.route.js");
 app.use(bodyParser.json());
 
 const allowedOrigins =
-  process.env.Node_ENV === "production"
+  process.env.NODE_ENV === "production"
     ? [process.env.Production_url]
     : ["http://localhost:5173"];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  })
+);
 
 app.set("trust proxy", 1);
 
@@ -36,12 +43,6 @@ const limiter = rateLimit({
   },
 });
 
-app.use(
-  cors({
-    origin: allowedOrigins,
-    credentials: true,
-  })
-);
 app.use(express.urlencoded({ extended: false }));
 app.use(limiter);
 
