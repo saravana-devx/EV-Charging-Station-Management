@@ -75,13 +75,11 @@ exports.loginUser = [
             expiresIn: "7d",
           });
 
-          //   user.token = token;
           user.password = undefined;
 
           const options = {
             expires: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000), // 2 days
             httpOnly: true, // Cookie accessible only via HTTP(S)
-            // secure: process.env.NODE_ENV === "production", // HTTPS-only in production
             sameSite: "strict", // Protects against CSRF
           };
 

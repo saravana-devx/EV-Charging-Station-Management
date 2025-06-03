@@ -45,7 +45,6 @@ app.use(
 app.use(express.urlencoded({ extended: false }));
 app.use(limiter);
 
-// app.use("/api/v1/auth",authRoute);
 app.use("/api/v1/chargingStation", chargingStationRoute);
 app.use("/api/v1/auth", authRoute);
 

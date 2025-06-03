@@ -22,22 +22,6 @@ export const useChargerStore = defineStore("charger", {
     error: null,
   }),
   actions: {
-    async fetchChargersList() {
-      const toast = useToast();
-      this.loading = true;
-      try {
-        const response = await axios.get(
-          "http://localhost:4000/api/v1/chargingStation/charging-stations-list"
-        );
-        this.chargers = response.data.data;
-      } catch (e) {
-        console.error("fetchChargersList error:", e);
-        this.error = e.message || "Failed to load chargers";
-        toast.error(this.error);
-      } finally {
-        this.loading = false;
-      }
-    },
     async fetchChargers() {
       const toast = useToast();
       this.loading = true;
@@ -58,8 +42,6 @@ export const useChargerStore = defineStore("charger", {
           "http://localhost:4000/api/v1/chargingStation/filter-charing-station",
           { params }
         );
-        console.log(response.data)
-        // console.warn(chargers)
         this.chargers = response.data.data;
       } catch (e) {
         console.error("fetchChargers error:", e);

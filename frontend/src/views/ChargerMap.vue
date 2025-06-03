@@ -9,7 +9,7 @@ const store = useChargerStore()
 const map = ref(null)
 const markersLayer = ref(null)
 
-const chargers = store.chargers // reactive
+const chargers = store.chargers
 
 const customIcon = L.icon({
     iconUrl: customMarkerIconUrl,
@@ -48,7 +48,7 @@ function renderMarkers() {
 }
 
 onMounted(async () => {
-    await store.fetchChargersList() // fetch from backend or pinia store
+    await store.fetchChargers()
 
     map.value = L.map('map').setView([19.075983, 72.877655], 7)
 

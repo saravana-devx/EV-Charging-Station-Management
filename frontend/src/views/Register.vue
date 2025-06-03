@@ -70,13 +70,11 @@ async function handleSubmit() {
             });
 
             toast.success('Account registered successfully!');
-            console.log('Account register successful:', response.data);
 
             router.push('/');
         }
     } catch (e) {
         const errorMessage = e.response?.data?.message || e.message || 'Registration failed';
-        console.error('Registration failed:', errorMessage);
 
         toast.error(errorMessage);
     }

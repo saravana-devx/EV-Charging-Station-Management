@@ -5,7 +5,6 @@ exports.createChargingStation = async (req, res) => {
   try {
     const { name, latitude, longitude, status, powerOutput, connectorType } =
       req.body;
-    console.log(req.body);
     const currentUser = req.currentUser;
     const user = await User.findById(currentUser.id);
     if (!user) {
@@ -123,44 +122,10 @@ exports.updateChargingStation = async (req, res) => {
   }
 };
 
-exports.getChargingStations = async (req, res) => {
-  try {
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 100;
-    const startIndex = (page - 1) * limit;
-
-    const chargingStation = await ChargingStation.find()
-      .limit(limit)
-      .skip(startIndex)
-      .exec();
-    console.log(page);
-    console.log(chargingStation);
-    if (chargingStation.length < 0) {
-      return res.status(404).json({
-        success: false,
-        message: "No charging station available",
-      });
-    }
-
-    return res.status(200).json({
-      success: true,
-      message: "All charging stations",
-      data: chargingStation,
-    });
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      success: false,
-      message: "Invalid Server Error",
-      error: error.message,
-    });
-  }
-};
-
 exports.deleteChargingStation = async (req, res) => {
   try {
     const stationId = req.params.stationId;
-    console.log("id : ", stationId);
+
     const chargingStation = await ChargingStation.findById(stationId);
 
     const currentUser = req.currentUser;
@@ -196,8 +161,14 @@ exports.getFilteredChargers = async (req, res) => {
     if (connectorType) filter.connectorType = connectorType;
 
     const chargingStations = await ChargingStation.find(filter);
-    console.log(chargingStations);
-    // console.log(`charging stations : ${chargingStations}`);
+
+    if (chargingStations.length < 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No charging station available",
+      });
+    }
+
     return res.status(200).json({
       success: true,
       message: "filter charging station",

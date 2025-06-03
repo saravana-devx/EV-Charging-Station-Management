@@ -18,7 +18,6 @@ router.patch(
   updateChargingStation
 );
 router.get("/filter-charing-station", getFilteredChargers);
-router.get("/charging-stations-list", getChargingStations);
 router.delete(
   "/delete-charging-station/:stationId",
   auth,

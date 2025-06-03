@@ -64,13 +64,11 @@ async function handleSubmit() {
             });
 
             toast.success('Login successful!');
-            console.log('Login successful:', response.data);
 
             router.push('/');
         }
     } catch (error) {
         const errorMessage = error.response?.data?.message || error.message || 'Login failed';
-        console.error('Login failed:', errorMessage);
         toast.error(errorMessage);
     }
 }
