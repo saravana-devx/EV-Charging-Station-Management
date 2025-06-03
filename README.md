@@ -61,19 +61,17 @@ npm install
 
 Create a .env file with the following variables:
 
-```bash
+
 env
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
 PORT=5000
 Start the backend server:
 
-```bash
 npm run dev
 Frontend Setup
 
 
-```bash
 cd ../frontend
 npm install
 npm run dev
