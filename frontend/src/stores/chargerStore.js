@@ -92,7 +92,7 @@ export const useChargerStore = defineStore("charger", {
           { headers: getHeaders() }
         );
         toast.success("Charger updated successfully");
-        await this.fetchChargersList();
+        await this.fetchChargers();
       } catch (e) {
         console.error("editCharger error:", e);
         let msg =
