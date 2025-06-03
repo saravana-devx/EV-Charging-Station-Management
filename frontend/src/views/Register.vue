@@ -56,7 +56,7 @@ const form = ref({
 
 async function handleSubmit() {
     try {
-        const response = await axios.post('http://localhost:4000/api/v1/auth/register-user', {
+        const response = await axios.post('https://ev-charging-station-management-backend.onrender.com/api/v1/auth/register-user', {
             firstName: form.value.firstName,
             lastName: form.value.lastName,
             email: form.value.email,

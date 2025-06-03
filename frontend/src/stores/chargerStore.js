@@ -39,7 +39,7 @@ export const useChargerStore = defineStore("charger", {
           params.connectorType = this.filters.connectorType.trim();
 
         const response = await axios.get(
-          "http://localhost:4000/api/v1/chargingStation/filter-charing-station",
+          "https://ev-charging-station-management-backend.onrender.com/api/v1/chargingStation/filter-charing-station",
           { params }
         );
         this.chargers = response.data.data;
@@ -61,7 +61,7 @@ export const useChargerStore = defineStore("charger", {
         };
         delete payload.location;
         await axios.post(
-          "http://localhost:4000/api/v1/chargingStation/create-charging-station",
+          "https://ev-charging-station-management-backend.onrender.com/api/v1/chargingStation/create-charging-station",
           payload,
           { headers: getHeaders() }
         );
@@ -87,7 +87,7 @@ export const useChargerStore = defineStore("charger", {
         };
         delete payload.location;
         await axios.patch(
-          `http://localhost:4000/api/v1/chargingStation/update-charging-station/${id}`,
+          `https://ev-charging-station-management-backend.onrender.com/api/v1/chargingStation/update-charging-station/${id}`,
           payload,
           { headers: getHeaders() }
         );
@@ -107,7 +107,7 @@ export const useChargerStore = defineStore("charger", {
       const toast = useToast();
       try {
         await axios.delete(
-          `http://localhost:4000/api/v1/chargingStation/delete-charging-station/${id}`,
+          `https://ev-charging-station-management-backend.onrender.com/api/v1/chargingStation/delete-charging-station/${id}`,
           {
             headers: getHeaders(),
           }
