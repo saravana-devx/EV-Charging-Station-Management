@@ -61,22 +61,19 @@ npm install
 
 Create a .env file with the following variables:
 
+```bash
 env
-Copy
-Edit
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
 PORT=5000
 Start the backend server:
 
-bash
-Copy
-Edit
+```bash
 npm run dev
 Frontend Setup
-bash
-Copy
-Edit
+
+
+```bash
 cd ../frontend
 npm install
 npm run dev
@@ -87,9 +84,7 @@ Open your browser and visit:
 The frontend uses Leaflet.js with OpenStreetMap for visualizing charging station locations.
 
 📂 Folder Structure
-css
-Copy
-Edit
+
 EV-Charging-Station-Management/
 │
 ├── backend/
